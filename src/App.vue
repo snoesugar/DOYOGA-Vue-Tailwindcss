@@ -6,6 +6,7 @@
     Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
     documentation
   </p>
+  <div class="text-4xl text-red-500 font-bold">測試字體與顏色</div>
 </template>
 
-<style scoped></style>
+<!-- <style scoped></style> -->
