@@ -21,7 +21,7 @@
       <div class="container mx-auto px-4 py-8">
         <div class="flex items-center justify-between">
           <div class="flex shrink-0 items-center">
-            <img class="h-8 w-auto" src="../../logo-white.png" alt="logo" />
+            <img class="h-8 w-auto" src="../../public/logo-white.png" alt="logo" />
           </div>
           <div class="flex space-x-2">
             <a href="#" class="text-white text-2xl hover:underline"
