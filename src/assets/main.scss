@@ -1,3 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 引入字體 */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100..900&display=swap');
+
+/* 將字體應用到全站的基底層 */
+@layer base {
+  body {
+    @apply font-sans; /* 自動使用剛剛在 config 設定的 Noto Sans TC */
+  }
+}
