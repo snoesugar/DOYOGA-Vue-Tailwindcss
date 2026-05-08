@@ -230,28 +230,28 @@ const features = [
 
 // 精心設計、課程多元
 const yogaClasses = [
-  { Image: '../public/yoga-8.jpg', alt: 'yoga-8' }, // 嘗試改用絕對路徑
-  { Image: '../public/yoga-9.jpg', alt: 'yoga-9' },
-  { Image: '../public/yoga-10.jpg', alt: 'yoga-10' },
-  { Image: '../public/yoga-11.jpg', alt: 'yoga-11' },
+  { Image: '/yoga-8.jpg', alt: 'yoga-8' },
+  { Image: '/yoga-9.jpg', alt: 'yoga-9' },
+  { Image: '/yoga-10.jpg', alt: 'yoga-10' },
+  { Image: '/yoga-11.jpg', alt: 'yoga-11' },
 ]
 
 //方案選擇
 const plans = [
   {
-    img: '../public/yoga-11.jpg',
+    img: '/yoga-11.jpg',
     title: '整體健身',
     price: 'NT $450 / 次',
     desc: '分基礎、中級、高級可以選擇。初次至 DOYOGA 上課建議選擇此方案。',
   },
   {
-    img: '../public/yoga-12.jpg',
+    img: '/yoga-12.jpg',
     title: '短期體驗',
     price: 'NT $1800 / 月',
     desc: '分基礎、中級、高級可以選擇。想試著培養瑜珈習慣者可以選擇此方案。',
   },
   {
-    img: '../public/yoga-13.jpg',
+    img: '/yoga-13.jpg',
     title: '長期體驗',
     price: 'NT $5600 / 季',
     desc: '分基礎、中級、高級可以選擇。有長期習慣做瑜伽者建議選擇此方案。',
@@ -261,42 +261,42 @@ const plans = [
 // 聽聽他們怎麼說
 const testimonials = [
   {
-    img: '../public/user-1.png',
+    img: '/user-1.png',
     name: 'Joanne',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '服務很好、設備優良！',
   },
   {
-    img: '../public/user-2.png',
+    img: '/user-2.png',
     name: '穎旻',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '上課後身體健康很多',
   },
   {
-    img: '../public/user-3.png',
+    img: '/user-3.png',
     name: '子琪',
     date: 'Oct 17 2020',
     rating: 3,
     comment: '上課很有趣！',
   },
   {
-    img: '../public/user-4.png',
+    img: '/user-4.png',
     name: '葉子',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '老師的教學很專業',
   },
   {
-    img: '../public/user-5.png',
+    img: '/user-5.png',
     name: '葉子',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '很舒壓',
   },
   {
-    img: '../public/user-6.png',
+    img: '/user-6.png',
     name: '葉子',
     date: 'Oct 17 2020',
     rating: 5,
