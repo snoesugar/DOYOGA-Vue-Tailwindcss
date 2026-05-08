@@ -8,11 +8,31 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: Layout, // 設定根路徑使用 Layout
+      component: Layout,
       children: [
         {
           path: '', // 這就代表 '/'
           component: Home,
+        },
+        {
+          path: '/course',
+          component: () => import('../views/Course.vue'),
+        },
+        {
+          path: '/surroundings',
+          component: () => import('../views/Surroundings.vue'),
+        },
+        {
+          path: '/curriculum',
+          component: () => import('../views/Curriculum.vue'),
+        },
+        {
+          path: '/reservation',
+          component: () => import('../views/Reservation.vue'),
+        },
+        {
+          path: '/contact',
+          component: () => import('../views/Contact.vue'),
         },
       ],
     },

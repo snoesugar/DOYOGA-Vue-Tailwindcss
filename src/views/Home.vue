@@ -1,7 +1,7 @@
 <template>
   <header class="relative flex flex-col justify-center gap-6">
     <img src="../../public/header.jpeg" alt="header" />
-    <div class="absolute text-secondary-text pl-[180px]">
+    <div class="absolute text-secondary-text pl-10 md:pl-[180px]">
       <span>健身輕時尚</span>
       <h1 class="text-4xl font-medium">DOYOGA，做你的瑜珈</h1>
       <p class="text-2xl w-96 mb-4">多給自己一點時間享受靜謐，傾聽內心的聲音。</p>
