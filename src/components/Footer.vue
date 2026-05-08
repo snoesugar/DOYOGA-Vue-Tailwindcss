@@ -2,15 +2,21 @@
   <footer class="bg-primary-title">
     <div class="py-8 border-b border-white">
       <div class="container mx-auto px-4">
-        <div class="flex items-center justify-between">
-          <p class="text-2xl text-white whitespace-nowrap mr-6">現在訂閱，獲得課程優惠碼！</p>
-          <div class="flex items-center">
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 w-full"
+        >
+          <p class="text-2xl text-white whitespace-nowrap">現在訂閱，獲得課程優惠碼！</p>
+
+          <div class="flex flex-row items-center w-full sm:w-auto mt-2 sm:mt-0">
             <input
               type="email"
               placeholder="輸入您的電子信箱"
-              class="w-64 px-4 py-2 text-primary-title placeholder:text-primary-title focus:outline-none focus:ring-2 focus:ring-primary-btn"
+              class="flex-grow w-64 px-4 py-2 text-primary-title text-xl placeholder:text-primary-title focus:outline-none focus:ring-2 focus:ring-primary-btn"
             />
-            <button class="bg-primary-btn px-4 py-2 text-white hover:opacity-90 transition">
+
+            <button
+              class="flex-shrink-0 bg-primary-btn px-4 py-2 text-xl text-white hover:opacity-90 transition"
+            >
               訂閱
             </button>
           </div>
@@ -18,7 +24,7 @@
       </div>
     </div>
     <div class="bg-primary-title">
-      <div class="container mx-auto px-4 py-8">
+      <div class="container mx-auto px-4 py-6 sm:py-8">
         <div class="flex items-center justify-between">
           <div class="flex shrink-0 items-center">
             <img class="h-8 w-auto" src="../../public/logo-white.png" alt="logo" />
@@ -44,7 +50,9 @@
             <a href="#" class="text-white font-light no-underline">當月課表</a>
           </li>
         </ul>
-        <p class="text-center text-white -mt-6">© 2021. All Rights Reserved.</p>
+        <p class="text-start sm:text-center text-white mt-2 sm:-mt-6">
+          © 2021. All Rights Reserved.
+        </p>
       </div>
     </div>
   </footer>
