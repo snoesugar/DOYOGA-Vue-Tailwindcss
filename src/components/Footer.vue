@@ -1,9 +1,9 @@
 <template>
   <footer class="bg-primary-title">
     <div class="py-8 border-b border-white">
-      <div class="container mx-auto px-4">
+      <div class="container mx-auto px-10 lg:px-4">
         <div
-          class="flex flex-col md:flex-row items-start md:items-center justify-between gap-2 w-full"
+          class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2 w-full"
         >
           <p class="text-2xl text-white whitespace-nowrap">現在訂閱，獲得課程優惠碼！</p>
 
@@ -24,10 +24,10 @@
       </div>
     </div>
     <div class="bg-primary-title">
-      <div class="container mx-auto px-4 py-6 sm:py-8">
+      <div class="container mx-auto px-10 lg:px-4 py-6 sm:py-8">
         <div class="flex items-center justify-between">
           <div class="flex shrink-0 items-center">
-            <img class="h-8 w-auto" src="../../public/logo-white.png" alt="logo" />
+            <img class="h-8 w-auto" src="/logo-white.png" alt="logo" />
           </div>
           <div class="flex space-x-2">
             <a href="#" class="text-white text-2xl hover:underline"
@@ -41,13 +41,19 @@
         </div>
         <ul class="mt-2 space-y-2">
           <li>
-            <a href="#" class="text-white font-light no-underline">課程介紹</a>
+            <RouterLink to="/course" class="text-white font-light no-underline"
+              >課程介紹</RouterLink
+            >
           </li>
           <li>
-            <a href="#" class="text-white font-light no-underline">瑜珈空間</a>
+            <RouterLink to="/surroundings" class="text-white font-light no-underline"
+              >瑜珈空間</RouterLink
+            >
           </li>
           <li>
-            <a href="#" class="text-white font-light no-underline">當月課表</a>
+            <RouterLink to="/curriculum" class="text-white font-light no-underline"
+              >當月課表</RouterLink
+            >
           </li>
         </ul>
         <p class="text-start sm:text-center text-white mt-2 sm:-mt-6">

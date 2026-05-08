@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden md:flex flex-col gap-2">
+  <div class="fixed right-4 top-1/2 -translate-y-1/2 z-50 hidden lg:flex flex-col gap-2">
     <a href="#" class="text-5xl text-primary-title hover:opacity-80 transition">
       <i class="bi bi-facebook"></i>
     </a>

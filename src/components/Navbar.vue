@@ -1,6 +1,6 @@
 <template>
   <Disclosure as="nav" class="relative bg-primary-bg" v-slot="{ open }">
-    <div class="container mx-auto px-4 md:px-4 sm:px-8">
+    <div class="container mx-auto px-4 lg:px-8 sm:px-10">
       <div class="relative flex h-16 items-center justify-between">
         <div class="flex flex-1 items-center justify-between">
           <!-- Logo -->
@@ -11,7 +11,7 @@
           </div>
 
           <!-- Desktop Menu (navigation) -->
-          <div class="hidden sm:ml-6 sm:block">
+          <div class="hidden lg:ml-6 lg:block">
             <div class="flex space-x-4">
               <RouterLink
                 v-for="item in navigation"
@@ -30,7 +30,7 @@
           </div>
 
           <!-- Desktop Menu (indexbtn) -->
-          <div class="hidden sm:ml-6 sm:block">
+          <div class="hidden lg:ml-6 lg:block">
             <div class="flex space-x-4">
               <RouterLink
                 v-for="item in indexbtn"
@@ -50,7 +50,7 @@
         </div>
 
         <!-- Mobile Menu Button -->
-        <div class="absolute inset-y-0 right-0 flex items-center sm:hidden">
+        <div class="absolute inset-y-0 right-0 flex items-center lg:hidden">
           <DisclosureButton
             class="relative inline-flex items-center justify-center rounded-md p-2 text-secondary-text hover:bg-primary-btn hover:text-white focus:outline-none"
           >
@@ -70,7 +70,7 @@
       leave-from-class="opacity-100 translate-y-0"
       leave-to-class="opacity-0 -translate-y-4"
     >
-      <DisclosurePanel class="sm:hidden">
+      <DisclosurePanel class="lg:hidden">
         <div class="space-y-1 px-2 pt-2 pb-3">
           <!-- 直接用 RouterLink，並透過 v-slot 取得 close 方法 -->
           <RouterLink
