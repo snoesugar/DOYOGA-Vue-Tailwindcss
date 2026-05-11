@@ -1,26 +1,32 @@
 <template>
-  <header class="relative flex flex-col justify-center gap-6">
-    <img src="/header.jpeg" alt="header" />
-    <div class="absolute text-secondary-text pl-10 lg:pl-[180px]">
-      <span>健身輕時尚</span>
-      <h1 class="text-4xl font-medium">DOYOGA，做你的瑜珈</h1>
-      <p class="text-2xl w-96 mb-4">多給自己一點時間享受靜謐，傾聽內心的聲音。</p>
-      <button class="px-4 py-2 bg-primary-bg text-secondary-text rounded-md mr-2">立即預約</button>
-      <button class="px-4 py-2 bg-primary-btn text-white rounded-md mr-2">課程介紹</button>
+  <header class="relative flex flex-col h-[560px] md:h-full justify-center gap-6">
+    <img src="/header.jpeg" class="w-full h-full object-cover object-center block" alt="header" />
+    <div class="absolute text-secondary-text pl-4 md:pl-10 lg:pl-[180px]">
+      <p class="mb-2 md:mb-0">健身輕時尚</p>
+      <h1 class="text-3xl md:text-4xl font-medium mb-1">DOYOGA，做你的瑜珈</h1>
+      <p class="text-xl md:text-2xl md:w-96 mb-6">多給自己一點時間享受靜謐，傾聽內心的聲音。</p>
+      <RouterLink
+        to="/reservation"
+        class="px-4 py-2 bg-primary-bg text-secondary-text rounded-md mr-2"
+        >立即預約</RouterLink
+      >
+      <RouterLink to="/course" class="px-4 py-2 bg-primary-btn text-white rounded-md mr-2"
+        >課程介紹</RouterLink
+      >
     </div>
   </header>
   <!-- 感受身心，活在當下 -->
-  <div class="container px-10 lg:px-8 py-8 lg:py-10 text-center">
-    <h2 class="text-3xl font-medium text-primary-title mb-1">感受身心，活在當下</h2>
+  <div class="container px-4 md:px-10 lg:px-8 py-8 lg:py-10 text-center">
+    <h2 class="text-2xl md:text-3xl font-medium text-primary-title mb-1">感受身心，活在當下</h2>
     <p class="text-xl text-primary-text mb-6 lg:mb-9">DOYOGA 可以帶給你...</p>
 
-    <div class="flex flex-col md:flex-row items-center justify-center gap-8 mb-4 lg:mb-6">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8 mb-4 lg:mb-6">
       <div
         v-for="item in features"
         :key="item.title"
         class="relative group overflow-hidden rounded-2xl w-full"
       >
-        <div class="h-[252px] lg:h-[420px]">
+        <div class="h-[480px] md:h-[252px] lg:h-[420px]">
           <img
             :src="item.img"
             :alt="item.title"
@@ -38,7 +44,7 @@
   </div>
   <!-- 頂尖師資、專業教學 -->
   <div class="bg-primary-bg">
-    <div class="container px-10 lg:px-8 py-8 lg:py-16 text-center">
+    <div class="container px-4 md:px-10 lg:px-8 py-8 lg:py-16 text-center">
       <div class="grid lg:grid-cols-2 items-center justify-center gap-8">
         <img
           src="../../public/yoga-4.jpeg"
@@ -46,20 +52,20 @@
           class="w-full h-[628px] rounded-2xl object-cover object-center hidden lg:block"
         />
         <div class="text-left">
-          <div class="text-center lg:text-left">
-            <h3 class="text-3xl font-medium text-primary-title mb-1">頂尖師資、專業教學</h3>
-            <p class="text-primary-text text-xl mx-auto w-96 lg:w-full mb-6">
-              強力師資，經歷豐富，協會認證。運用引導式教學，針對不同需求的人制定專屬課程。
-            </p>
-          </div>
-          <div class="flex flex-col gap-4">
+          <h3 class="text-center lg:text-left text-3xl font-medium text-primary-title mb-1">
+            頂尖師資、專業教學
+          </h3>
+          <p class="text-xl text-primary-text mx-auto md:w-96 lg:w-full mb-6">
+            強力師資，經歷豐富，協會認證。運用引導式教學，針對不同需求的人制定專屬課程。
+          </p>
+          <div class="flex flex-col gap-4 mb-4 md:mb-0">
             <div
-              class="group bg-white text-secondary-text py-6 px-8 rounded-2xl flex items-center ml-28 lg:ml-0 transition-all duration-300 cursor-pointer hover:py-10 hover:px-12 hover:ml-14 hover:lg:-ml-[95px]"
+              class="group bg-white text-secondary-text p-4 md:py-6 md:px-8 rounded-2xl flex items-center md:ml-28 lg:ml-0 transition-all duration-300 cursor-pointer hover:px-4 hover:md:py-10 hover:md:px-12 hover:ml-0 hover:md:ml-14 hover:lg:-ml-[95px]"
             >
               <img
                 src="/teacher-1.png"
                 alt="teacher-1"
-                class="mr-5 flex-shrink-0 w-[68px] h-[68px] transition-all duration-300 group-hover:w-[94px] group-hover:h-[94px] object-cover"
+                class="mr-4 md:mr-5 flex-shrink-0 w-[48px] h-[48px] md:w-[68px] md:h-[68px] transition-all duration-300 group-hover:md:w-[94px] group-hover:md:h-[94px] object-cover"
               />
 
               <div class="flex flex-col text-secondary-text gap-1">
@@ -74,12 +80,12 @@
             </div>
 
             <div
-              class="group bg-white text-secondary-text py-6 px-8 rounded-2xl flex items-center ml-28 lg:ml-0 transition-all duration-300 cursor-pointer hover:py-10 hover:px-12 hover:ml-14 hover:lg:-ml-[95px]"
+              class="group bg-white text-secondary-text p-4 md:py-6 md:px-8 rounded-2xl flex items-center md:ml-28 lg:ml-0 transition-all duration-300 cursor-pointer hover:px-4 hover:md:py-10 hover:md:px-12 hover:ml-0 hover:md:ml-14 hover:lg:-ml-[95px]"
             >
               <img
                 src="/teacher-2.png"
                 alt="teacher-2"
-                class="mr-5 flex-shrink-0 w-[68px] h-[68px] transition-all duration-300 group-hover:w-[94px] group-hover:h-[94px] object-cover"
+                class="mr-4 md:mr-5 flex-shrink-0 w-[48px] h-[48px] md:w-[68px] md:h-[68px] transition-all duration-300 group-hover:md:w-[94px] group-hover:md:h-[94px] object-cover"
               />
               <div class="flex flex-col text-secondary-text gap-1">
                 <span class="text-xl">Kanae 老師</span>
@@ -93,12 +99,12 @@
             </div>
 
             <div
-              class="group bg-white text-secondary-text py-6 px-8 rounded-2xl flex items-center ml-28 lg:ml-0 mb-4 lg:mb-0 transition-all duration-300 cursor-pointer hover:py-10 hover:px-12 hover:ml-14 hover:lg:-ml-[95px]"
+              class="group bg-white text-secondary-text p-4 md:py-6 md:px-8 rounded-2xl flex items-center md:ml-28 lg:ml-0 transition-all duration-300 cursor-pointer hover:px-4 hover:md:py-10 hover:md:px-12 hover:ml-0 hover:md:ml-14 hover:lg:-ml-[95px]"
             >
               <img
                 src="/teacher-3.png"
                 alt="teacher-3"
-                class="mr-5 flex-shrink-0 w-[68px] h-[68px] transition-all duration-300 group-hover:w-[94px] group-hover:h-[94px] object-cover"
+                class="mr-4 md:mr-5 flex-shrink-0 w-[48px] h-[48px] md:w-[68px] md:h-[68px] transition-all duration-300 group-hover:md:w-[94px] group-hover:md:h-[94px] object-cover"
               />
               <div class="flex flex-col text-secondary-text gap-1">
                 <span class="text-xl">Asa Ifrit 老師</span>
@@ -117,57 +123,67 @@
   </div>
   <!-- 舒適空間、靜心放鬆 -->
   <div class="bg-white">
-    <div class="container px-10 lg:px-8 py-14 lg:py-16 text-center">
-      <div class="grid grid-cols-2 items-center justify-center gap-8">
-        <div class="grid grid-cols-3 gap-6">
-          <img
-            src="../../public/yoga-5.jpg"
-            alt="yoga-5"
-            class="col-span-2 w-full h-[266px] lg:h-[444px] rounded-2xl object-cover object-center block"
-          />
-
-          <div class="flex flex-col h-full gap-6">
-            <img
-              src="../../public/yoga-6.jpg"
-              alt="yoga-6"
-              class="flex-1 rounded-2xl object-cover object-center block min-h-0"
-            />
-
-            <img
-              src="../../public/yoga-7.jpg"
-              alt="yoga-7"
-              class="flex-1 rounded-2xl object-cover object-center block min-h-0"
-            />
-          </div>
-        </div>
-        <div class="text-left">
-          <h3 class="text-3xl font-medium text-primary-title mb-1">舒適空間、靜心放鬆</h3>
-          <p class="text-primary-text text-xl mb-4 lg:mb-6">
+    <div class="container px-4 md:px-10 lg:px-8 py-12 md:py-14 lg:py-16">
+      <div class="flex flex-col md:flex-row items-start justify-center gap-8 md:gap-10 lg:gap-16">
+        <div class="text-left w-full md:w-1/2 order-1 md:order-2">
+          <h3 class="text-2xl lg:text-3xl font-medium text-primary-title mb-1">
+            舒適空間、靜心放鬆
+          </h3>
+          <p class="text-primary-text text-lg lg:text-xl mb-4 lg:mb-6">
             我們都渴望平靜安穩的生活，擁有一處能夠靜心的角落，安撫每天繁雜忙碌的心。
           </p>
-          <a href="#" class="text-primary-title">
-            環境介紹 <i class="bi bi-arrow-right ml-2"></i
-          ></a>
+          <a href="#" class="text-primary-title flex items-center group">
+            環境介紹
+            <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 md:gap-4 w-full md:w-1/2 order-2 md:order-1">
+          <div class="h-[210px] md:h-[350px] lg:h-[444px]">
+            <img
+              src="/yoga-5.jpg"
+              alt="yoga-5"
+              class="w-full h-full rounded-2xl object-cover object-center block"
+            />
+          </div>
+
+          <div class="flex flex-col h-[210px] md:h-[350px] lg:h-[444px] gap-3 md:gap-4">
+            <img
+              src="/yoga-6.jpg"
+              alt="yoga-6"
+              class="flex-1 min-h-0 w-full rounded-2xl object-cover object-center block"
+            />
+            <img
+              src="/yoga-7.jpg"
+              alt="yoga-7"
+              class="flex-1 min-h-0 w-full rounded-2xl object-cover object-center hidden md:block"
+            />
+          </div>
         </div>
       </div>
     </div>
   </div>
   <!-- 精心設計、課程多元 -->
   <div class="bg-primary-bg">
-    <div class="container px-10 lg:px-8 py-14 lg:py-16 text-center">
-      <div class="grid grid-cols-2 items-center justify-center gap-8">
-        <div class="text-left">
-          <h3 class="text-3xl font-medium text-primary-title mb-1">精心設計、課程多元</h3>
-          <p class="text-primary-text text-xl mb-6">
+    <div class="container px-4 md:px-10 lg:px-8 py-12 lg:py-16">
+      <div
+        class="flex flex-col md:grid md:grid-cols-2 items-start justify-center gap-4 md:gap-8 lg:gap-16"
+      >
+        <div class="text-left w-full">
+          <h3 class="text-2xl lg:text-3xl font-medium text-primary-title mb-1">
+            精心設計、課程多元
+          </h3>
+          <p class="text-primary-text text-lg lg:text-xl mb-4 lg:mb-6">
             教師帶領多元課程，釋放壓力，與身心常見的緊繃不適溫柔和解。
           </p>
-          <a href="#" class="text-primary-title">
-            課程介紹 <i class="bi bi-arrow-right ml-2"></i
-          ></a>
+          <RouterLink to="/course" class="text-primary-title flex items-center group">
+            課程介紹
+            <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+          </RouterLink>
         </div>
-        <!-- 手機板 -->
-        <div class="lg:hidden">
-          <div class="grid grid-cols-2 gap-7">
+
+        <div class="w-full">
+          <div class="grid grid-cols-2 gap-4 lg:hidden">
             <img
               v-for="item in yogaClasses"
               :key="item.Image"
@@ -176,55 +192,56 @@
               class="w-full aspect-square rounded-2xl object-cover object-center block"
             />
           </div>
-        </div>
-        <!-- 桌面swiper -->
-        <swiper
-          :slides-per-view="1.5"
-          :space-between="30"
-          class="overflow-hidden w-full hidden lg:block"
-        >
-          <swiper-slide
-            v-for="item in yogaClasses"
-            :key="item.Image"
-            class="rounded-2xl flex items-center justify-center bg-white"
+
+          <swiper
+            :slides-per-view="1.5"
+            :space-between="30"
+            class="overflow-hidden w-full hidden lg:block"
           >
-            <div class="w-full aspect-square rounded-2xl overflow-hidden">
-              <img :src="item.Image" :alt="item.alt" class="w-full h-full object-cover" />
-            </div>
-          </swiper-slide>
-        </swiper>
+            <swiper-slide
+              v-for="item in yogaClasses"
+              :key="item.Image"
+              class="rounded-2xl flex items-center justify-center"
+            >
+              <div class="w-full aspect-square rounded-2xl overflow-hidden">
+                <img :src="item.Image" :alt="item.alt" class="w-full h-full object-cover" />
+              </div>
+            </swiper-slide>
+          </swiper>
+        </div>
       </div>
     </div>
   </div>
   <!-- 方案選擇 -->
-  <div class="container px-10 lg:px-8 py-10 text-center">
+  <div class="container px-4 md:px-10 lg:px-8 py-8 md:py-10 text-center">
     <h2 class="text-3xl font-medium text-primary-title mb-1">方案選擇</h2>
     <p class="text-xl text-primary-text mb-6 lg:mb-9">DOYOGA 可以帶給你...</p>
-    <div class="grid grid-cols-3 items-center justify-center gap-8 mb-4 lg:mb-6">
+    <div class="grid grid-cols-3 items-center justify-center gap-4 md:gap-8 mb-4 lg:mb-6">
       <div
         v-for="item in plans"
         :key="item.title"
-        class="col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-row lg:flex-col"
+        class="col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-col md:flex-row lg:flex-col"
       >
         <img
           :src="item.img"
           :alt="item.title"
-          class="w-1/2 lg:w-full h-[238px] lg:h-[243px] object-cover object-center block"
+          class="md:w-1/2 lg:w-full h-[238px] lg:h-[243px] object-cover object-center block"
         />
 
         <div class="p-6 flex-1 text-left lg:text-center flex flex-col justify-between">
-          <div>
+          <div class="text-center md:text-left">
             <h3 class="text-xl text-primary-title mb-1">
               {{ item.title }}
             </h3>
             <p class="text-xl text-primary-btn mb-2">
               {{ item.price }}
             </p>
-            <p class="text-primary-title text-start mb-6 lg:mb-10 line-clamp-2 lg:line-clamp-none">
-              {{ item.desc }}
-            </p>
           </div>
-
+          <p
+            class="text-primary-title text-start mb-10 md:mb-6 lg:mb-10 line-clamp-2 lg:line-clamp-none"
+          >
+            {{ item.desc }}
+          </p>
           <button class="w-full bg-primary-text py-2 text-white rounded-md text-xl">
             選擇課程
           </button>
@@ -234,47 +251,64 @@
   </div>
   <!-- 聽聽他們怎麼說 -->
   <div class="bg-primary-bg">
-    <div class="container pl-10 pr-0 lg:px-8 py-10 overflow-hidden">
+    <div class="container px-4 md:pl-10 md:pr-0 lg:px-8 py-8 md:py-10 overflow-hidden">
       <h3 class="text-3xl font-medium text-primary-title text-center mb-8">聽聽他們怎麼說</h3>
 
-      <div
-        ref="scrollContainer"
-        class="grid grid-flow-col grid-rows-2 gap-y-4 gap-x-4 lg:gap-x-8 overflow-x-auto pb-6 scrollbar-hide select-none cursor-grab active:cursor-grabbing snap-x snap-mandatory grid-cols-[repeat(auto-fill,45%)] lg:grid-cols-[repeat(auto-fill,31%)]"
-        @mousedown="startDragging"
-        @mousemove="onDragging"
-        @mouseup="stopDragging"
-        @mouseleave="stopDragging"
-      >
+      <div class="group">
         <div
-          v-for="item in testimonials"
-          :key="item.name"
-          class="bg-white text-secondary-text py-4 px-4 rounded-2xl flex items-center shrink-0 w-full snap-start border border-transparent transition-all"
+          ref="scrollContainer"
+          class="grid grid-flow-col grid-rows-3 md:grid-rows-2 gap-y-4 gap-x-8 overflow-x-auto pb-6 scrollbar-hide select-none cursor-grab active:cursor-grabbing snap-x snap-mandatory grid-cols-[100%] md:grid-cols-[repeat(auto-fill,45%)] lg:grid-cols-[repeat(auto-fill,31%)]"
+          @mousedown="startDragging"
+          @mousemove="onDragging"
+          @mouseup="stopDragging"
+          @mouseleave="stopDragging"
         >
-          <img
-            :src="item.img"
-            :alt="item.name"
-            class="mr-3 lg:mr-4 flex-shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
-          />
+          <div
+            v-for="item in testimonials"
+            :key="item.name"
+            class="bg-white text-secondary-text py-4 px-4 rounded-2xl flex items-center shrink-0 w-full snap-start border border-transparent transition-all"
+          >
+            <img
+              :src="item.img"
+              :alt="item.name"
+              class="mr-3 lg:mr-4 flex-shrink-0 w-12 h-12 lg:w-16 lg:h-16 rounded-full object-cover"
+            />
 
-          <div class="flex flex-col text-primary-title gap-2 overflow-hidden">
-            <div class="flex items-center">
-              <span class="truncate">{{ item.name }}</span>
-              <span class="ml-2 text-sm">{{ item.date }}</span>
+            <div class="flex flex-col text-primary-title gap-2 overflow-hidden">
+              <div class="flex items-center">
+                <span class="truncate">{{ item.name }}</span>
+                <span class="ml-2 text-sm">{{ item.date }}</span>
+              </div>
+
+              <p class="flex gap-1 text-primary-btn">
+                <i
+                  v-for="n in 5"
+                  :key="n"
+                  class="bi text-xl lg:text-2xl"
+                  :class="n <= item.rating ? 'bi-star-fill' : 'bi-star'"
+                ></i>
+              </p>
+
+              <p class="line-clamp-2 text-primary-title leading-tight">
+                {{ item.comment }}
+              </p>
             </div>
-
-            <p class="flex gap-1 text-primary-btn">
-              <i
-                v-for="n in 5"
-                :key="n"
-                class="bi text-xl lg:text-2xl"
-                :class="n <= item.rating ? 'bi-star-fill' : 'bi-star'"
-              ></i>
-            </p>
-
-            <p class="line-clamp-2 text-primary-title leading-tight">
-              {{ item.comment }}
-            </p>
           </div>
+        </div>
+        <div class="flex justify-between">
+          <button
+            @click="scrollPrev"
+            class="-translate-y-1/2 p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
+          >
+            <i class="bi bi-arrow-left text-3xl"></i>
+          </button>
+
+          <button
+            @click="scrollNext"
+            class="-translate-y-1/2 p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
+          >
+            <i class="bi bi-arrow-right text-3xl"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -368,14 +402,14 @@ const testimonials = [
   },
   {
     img: '/user-5.png',
-    name: '葉子',
+    name: 'Ray',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '很舒壓',
   },
   {
     img: '/user-6.png',
-    name: '葉子',
+    name: '俊儀',
     date: 'Oct 17 2020',
     rating: 5,
     comment: '讚的！',
@@ -417,6 +451,28 @@ const onDragging = (e: MouseEvent) => {
 
   // 更新捲動位置
   scrollContainer.value.scrollLeft = scrollLeft - walk
+}
+
+// 往後捲動 (Next)
+const scrollNext = () => {
+  if (scrollContainer.value) {
+    const scrollAmount = scrollContainer.value.clientWidth // 捲動一整個容器寬度
+    scrollContainer.value.scrollBy({
+      left: scrollAmount,
+      behavior: 'smooth',
+    })
+  }
+}
+
+// 往前捲動 (Prev)
+const scrollPrev = () => {
+  if (scrollContainer.value) {
+    const scrollAmount = scrollContainer.value.clientWidth
+    scrollContainer.value.scrollBy({
+      left: -scrollAmount,
+      behavior: 'smooth',
+    })
+  }
 }
 </script>
 

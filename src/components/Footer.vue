@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-primary-title">
-    <div class="py-8 border-b border-white">
-      <div class="container mx-auto px-10 lg:px-4">
+    <div class="py-6 md:py-8 border-b border-white">
+      <div class="container mx-auto px-4 md:px-10 lg:px-4">
         <div
           class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-2 w-full"
         >
@@ -24,7 +24,7 @@
       </div>
     </div>
     <div class="bg-primary-title">
-      <div class="container mx-auto px-10 lg:px-4 py-6 sm:py-8">
+      <div class="container mx-auto px-4 md:px-10 lg:px-4 py-6 md:py-8">
         <div class="flex items-center justify-between">
           <div class="flex shrink-0 items-center">
             <img class="h-8 w-auto" src="/logo-white.png" alt="logo" />

@@ -6,7 +6,7 @@
           <!-- Logo -->
           <div class="flex shrink-0 items-center">
             <RouterLink to="/" class="flex items-center">
-              <img class="h-8 w-auto" src="../../public/logo.png" alt="logo" />
+              <img class="h-8 w-auto" src="/logo.png" alt="logo" />
             </RouterLink>
           </div>
 
