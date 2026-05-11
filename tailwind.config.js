@@ -17,6 +17,9 @@ export default {
       fontSize: {
         '2.5xl': '1.75rem',
       },
+      boxShadow: {
+        'custom-card': '0px 3px 6px #00000029',
+      },
     },
     // container 應該在 extend 外面，這樣才能完全覆蓋預設行為
     container: {

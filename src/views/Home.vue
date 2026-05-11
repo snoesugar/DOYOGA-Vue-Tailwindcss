@@ -229,7 +229,7 @@
         />
 
         <div class="p-6 flex-1 text-left lg:text-center flex flex-col justify-between">
-          <div class="text-center md:text-left">
+          <div class="text-center md:text-left lg:text-center">
             <h3 class="text-xl text-primary-title mb-1">
               {{ item.title }}
             </h3>
