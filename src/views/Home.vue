@@ -257,7 +257,7 @@
       <div class="group">
         <div
           ref="scrollContainer"
-          class="grid grid-flow-col grid-rows-3 md:grid-rows-2 gap-y-4 gap-x-8 overflow-x-auto pb-6 scrollbar-hide select-none cursor-grab active:cursor-grabbing snap-x snap-mandatory grid-cols-[100%] md:grid-cols-[repeat(auto-fill,45%)] lg:grid-cols-[repeat(auto-fill,31%)]"
+          class="grid grid-flow-col grid-rows-3 md:grid-rows-2 gap-y-4 gap-x-8 overflow-x-auto pb-6 scrollbar-hide select-none cursor-grab active:cursor-grabbing snap-x snap-mandatory auto-cols-[100%] md:auto-cols-[45%] lg:auto-cols-[31%]"
           @mousedown="startDragging"
           @mousemove="onDragging"
           @mouseup="stopDragging"
@@ -295,17 +295,17 @@
             </div>
           </div>
         </div>
-        <div class="flex justify-between">
+        <div class="flex justify-between mb-6">
           <button
             @click="scrollPrev"
-            class="-translate-y-1/2 p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
+            class="p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
           >
             <i class="bi bi-arrow-left text-3xl"></i>
           </button>
 
           <button
             @click="scrollNext"
-            class="-translate-y-1/2 p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
+            class="p-2 text-primary-title/50 hover:text-primary-title transition-colors md:hidden"
           >
             <i class="bi bi-arrow-right text-3xl"></i>
           </button>
