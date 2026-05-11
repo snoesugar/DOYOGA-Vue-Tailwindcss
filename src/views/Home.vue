@@ -10,7 +10,7 @@
         class="px-4 py-2 bg-primary-bg text-secondary-text rounded-md mr-2"
         >立即預約</RouterLink
       >
-      <RouterLink to="/course" class="px-4 py-2 bg-primary-btn text-white rounded-md mr-2"
+      <RouterLink to="/course" class="px-4 py-2 bg-primary-text text-white rounded-md mr-2"
         >課程介紹</RouterLink
       >
     </div>
@@ -233,7 +233,7 @@
             <h3 class="text-xl text-primary-title mb-1">
               {{ item.title }}
             </h3>
-            <p class="text-xl text-primary-btn mb-2">
+            <p class="text-xl text-primary-text mb-2">
               {{ item.price }}
             </p>
           </div>
@@ -280,7 +280,7 @@
                 <span class="ml-2 text-sm">{{ item.date }}</span>
               </div>
 
-              <p class="flex gap-1 text-primary-btn">
+              <p class="flex gap-1 text-primary-text">
                 <i
                   v-for="n in 5"
                   :key="n"

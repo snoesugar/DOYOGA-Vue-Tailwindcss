@@ -11,7 +11,6 @@ export default {
         'primary-text': '#C0A4A5',
         'primary-title': '#907A7B',
         'primary-bg': '#F5F0E7',
-        'primary-btn': '#C0A4A5',
         'secondary-text': '#707070',
       },
       fontSize: {

@@ -18,10 +18,10 @@
           v-for="item in plans"
           :key="item.title"
           :class="[
-            'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-btn flex flex-col md:flex-row lg:flex-col transition-all duration-300',
+            'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-col md:flex-row lg:flex-col transition-all duration-300',
             selectedPlan === item.title
-              ? 'border-transparent ring-4 ring-primary-btn'
-              : 'border-primary-btn',
+              ? 'border-transparent ring-4 ring-primary-text'
+              : 'border-primary-text',
           ]"
         >
           <img
@@ -35,7 +35,7 @@
               <h3 class="text-xl text-primary-title mb-1">
                 {{ item.title }}
               </h3>
-              <p class="text-xl text-primary-btn mb-2">
+              <p class="text-xl text-primary-text mb-2">
                 {{ item.price }}
               </p>
             </div>
@@ -62,10 +62,10 @@
           :key="item.title"
           v-show="!selectedPlan || selectedPlan === item.title"
           :class="[
-            'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-btn flex flex-col md:flex-row lg:flex-col transition-all duration-300',
+            'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-col md:flex-row lg:flex-col transition-all duration-300',
             selectedPlan === item.title
-              ? 'border-transparent ring-4 ring-primary-btn'
-              : 'border-primary-btn',
+              ? 'border-transparent ring-4 ring-primary-text'
+              : 'border-primary-text',
             /* 如果已選中方案，在 md 尺寸將寬度撐滿 */
             selectedPlan ? 'md:w-full' : '',
           ]"
@@ -81,7 +81,7 @@
               <h3 class="text-xl text-primary-title mb-1">
                 {{ item.title }}
               </h3>
-              <p class="text-xl text-primary-btn mb-2">
+              <p class="text-xl text-primary-text mb-2">
                 {{ item.price }}
               </p>
             </div>
@@ -137,12 +137,12 @@
               v-for="item in courses"
               :key="item.title"
               :class="[
-                'flex-1 bg-primary-btn text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029] transition-all duration-300',
+                'flex-1 bg-primary-text text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029] transition-all duration-300',
                 selectedCourse === item.title
                   ? 'border-transparent ring-4 ring-white'
-                  : 'border-primary-btn',
+                  : 'border-primary-text',
               ]"
-              class="flex-1 bg-primary-btn text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029]"
+              class="flex-1 bg-primary-text text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029]"
             >
               <div class="flex items-center justify-between text-2xl font-medium mb-1">
                 {{ item.title }}{{ ' ' }}{{ item.englishTitle }}
@@ -180,12 +180,12 @@
             <button
               @click="selectCourse(item.title)"
               :class="[
-                'flex-1 bg-primary-btn text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029] transition-all duration-300',
+                'flex-1 bg-primary-text text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029] transition-all duration-300',
                 selectedCourse === item.title
                   ? 'border-transparent ring-4 ring-white'
-                  : 'border-primary-btn',
+                  : 'border-primary-text',
               ]"
-              class="flex-1 bg-primary-btn text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029]"
+              class="flex-1 bg-primary-text text-white text-left p-6 rounded-2xl shadow-[0px_3px_6px_#00000029]"
             >
               <div class="flex items-center justify-between text-2xl font-medium mb-1">
                 {{ item.title }}{{ ' ' }}{{ item.englishTitle }}
@@ -217,7 +217,7 @@
     <div v-if="selectedPlan" class="pt-8 lg:pt-10">
       <p class="text-primary-title mb-1">您選擇的是</p>
       <p
-        class="text-xl text-primary-title underline decoration-2 underline-offset-4 decoration-primary-btn mb-10"
+        class="text-xl text-primary-title underline decoration-2 underline-offset-4 decoration-primary-text mb-10"
       >
         {{ selectedPlan }}課程
         <span v-if="selectedCourse"> - {{ selectedCourse }}</span>
@@ -239,29 +239,34 @@
         保留修改預約須知之權利，修改後的條款將公佈於本網站上，不另外個別通知。如果您繼續在本網站進行參觀預約，就表示您已經了解、並同意遵守修改後的約定條款。
       </li>
     </ul>
-    <button v-if="selectedPlan">
-      <div
-        class="w-full bg-primary-text py-2 px-16 lg:px-32 text-white rounded-md text-xl mb-14 md:mb-12 lg:mb-16"
-      >
-        繼續預約
-      </div>
-    </button>
+    <RouterLink
+      v-if="selectedPlan"
+      to="/reservation-1"
+      class="inline-block w-full max-w-sm lg:max-w-md bg-primary-text py-2 px-16 lg:px-32 text-white rounded-md text-xl mb-14 md:mb-12 lg:mb-16 text-center hover:bg-opacity-90 transition-colors"
+    >
+      繼續預約
+    </RouterLink>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue' // 引入 ref 響應式 API
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 
-// 建立狀態：記錄目前選中的方案名稱，預設為 null
-const selectedPlan = ref<string | null>(null)
+import { useBookingStore } from '@/stores/booking'
+import { storeToRefs } from 'pinia'
 
-// 處理選擇方案的函式
+const bookingStore = useBookingStore()
+// 使用 storeToRefs 保持響應式
+const { selectedPlan, selectedCourse } = storeToRefs(bookingStore)
+
 const selectPlan = (planTitle: string) => {
-  selectedPlan.value = planTitle
+  bookingStore.setPlan(planTitle)
 }
 
+const selectCourse = (courseTitle: string) => {
+  bookingStore.setCourse(courseTitle)
+}
 // 方案資料
 const plans = [
   {
@@ -283,13 +288,6 @@ const plans = [
     desc: '分基礎、中級、高級可以選擇。有長期習慣做瑜伽者建議選擇此方案。',
   },
 ]
-
-// 選擇課程
-const selectedCourse = ref<string | null>(null)
-
-const selectCourse = (courseTitle: string) => {
-  selectedCourse.value = courseTitle
-}
 
 const courses = [
   {

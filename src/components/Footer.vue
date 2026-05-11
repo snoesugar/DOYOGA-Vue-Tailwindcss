@@ -11,11 +11,11 @@
             <input
               type="email"
               placeholder="輸入您的電子信箱"
-              class="flex-grow w-64 px-4 py-2 text-primary-title text-xl placeholder:text-primary-title focus:outline-none focus:ring-2 focus:ring-primary-btn"
+              class="flex-grow w-64 px-4 py-2 text-primary-title text-xl placeholder:text-primary-title focus:outline-none focus:ring-2 focus:ring-primary-text"
             />
 
             <button
-              class="flex-shrink-0 bg-primary-btn px-4 py-2 text-xl text-white hover:opacity-90 transition"
+              class="flex-shrink-0 bg-primary-text px-4 py-2 text-xl text-white hover:opacity-90 transition"
             >
               訂閱
             </button>
