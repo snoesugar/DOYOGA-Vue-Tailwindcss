@@ -2,7 +2,7 @@
   <!-- 立即預約 -->
   <div class="container px-4 lg:px-8 text-center pt-12 md:pt-16">
     <h1 class="text-3xl text-primary-title mb-6 md:mb-4 lg:mb-6">立即預約</h1>
-    <div class="flex flex-row gap-4 md:gap-8 justify-center mb-8">
+    <div class="flex flex-row gap-4 md:gap-8 justify-between md:justify-center mb-8">
       <div class="bg-primary-title text-white rounded-2xl py-3 px-4 md:px-3 lg:px-12">選擇方案</div>
       <div class="bg-primary-bg text-primary-title rounded-2xl py-3 px-4 md:px-3 lg:px-12">
         填寫資料
@@ -253,19 +253,26 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import 'swiper/css'
 
-import { useBookingStore } from '@/stores/booking'
+// 1. 導入 Store 與 storeToRefs
+import { useReservationStore } from '@/stores/useReservationStore'
 import { storeToRefs } from 'pinia'
 
-const bookingStore = useBookingStore()
-// 使用 storeToRefs 保持響應式
-const { selectedPlan, selectedCourse } = storeToRefs(bookingStore)
+// 2. 初始化 Store
+const store = useReservationStore()
 
+// 3. 使用 storeToRefs 提取狀態，這樣在 template 中可以直接使用 selectedPlan
+// 且它們會是響應式的（與 Store 同步）
+const { selectedPlan, selectedCourse } = storeToRefs(store)
+
+// 4. 定義點擊方法，呼叫 Store 的 Actions
 const selectPlan = (planTitle: string) => {
-  bookingStore.setPlan(planTitle)
+  store.setPlan(planTitle)
+  // 選擇方案時，通常會清空上一次選的課程，確保邏輯正確
+  store.setCourse('')
 }
 
 const selectCourse = (courseTitle: string) => {
-  bookingStore.setCourse(courseTitle)
+  store.setCourse(courseTitle)
 }
 // 方案資料
 const plans = [

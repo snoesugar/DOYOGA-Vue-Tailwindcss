@@ -38,6 +38,10 @@ const router = createRouter({
           path: '/reservation-1',
           component: () => import('../views/Reservation-1.vue'),
         },
+        {
+          path: '/reservation-2',
+          component: () => import('../views/Reservation-2.vue'),
+        },
       ],
     },
   ],
