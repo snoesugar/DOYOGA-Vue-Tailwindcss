@@ -18,7 +18,7 @@
           <h2 class="text-left text-3xl font-medium text-primary-title">本月限定課程 - 空中瑜珈</h2>
           <div class="flex mb-4">
             <span class="text-primary-text">授課老師：Carol Tang</span>
-            <div class="bg-primary-title text-sm text-white font-light py-1 px-4 rounded-2xl ml-2">
+            <div class="bg-primary-title text-sm text-white font-light px-1 py-4 rounded-2xl ml-2">
               60 min
             </div>
           </div>
