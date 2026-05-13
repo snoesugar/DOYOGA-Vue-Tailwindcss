@@ -1,11 +1,11 @@
 <template>
-  <div class="container px-4 lg:px-8 text-center py-12 md:py-16">
-    <h1 class="text-3xl text-primary-title mb-8">課程介紹</h1>
+  <div class="container px-4 md:px-8 text-center py-12 md:py-16">
+    <h1 class="text-3xl text-primary-title mb-6 lg:mb-8">課程介紹</h1>
     <div class="mx-auto max-w-5xl">
-      <div class="flex flex-col lg:flex-row items-stretch justify-center gap-8 px-4">
-        <div
-          class="hidden lg:block w-full lg:w-1/2 rounded-2xl overflow-hidden relative min-h-[400px]"
-        >
+      <div
+        class="flex flex-col md:flex-row items-stretch justify-center gap-2 md:gap-8 mb-0 md:mb-2 lg:mb-0"
+      >
+        <div class="w-full lg:w-1/2 rounded-2xl overflow-hidden relative min-h-[218px]">
           <img
             src="../../public/yoga-4.jpeg"
             alt="yoga-4"
@@ -15,16 +15,14 @@
 
         <!-- 右側文字區塊 -->
         <div class="text-left w-full lg:w-1/2 flex flex-col justify-center">
-          <h2 class="text-center lg:text-left text-3xl font-medium text-primary-title">
-            本月限定課程 - 空中瑜珈
-          </h2>
+          <h2 class="text-left text-3xl font-medium text-primary-title">本月限定課程 - 空中瑜珈</h2>
           <div class="flex mb-4">
             <span class="text-primary-text">授課老師：Carol Tang</span>
             <div class="bg-primary-title text-sm text-white font-light py-1 px-4 rounded-2xl ml-2">
               60 min
             </div>
           </div>
-          <p class="text-primary-title mx-auto md:w-96 lg:w-full mb-4">
+          <p class="text-primary-title md:w-96 lg:w-full mb-4">
             使用掛布懸掛在半空，進行哈達瑜珈體位法練習
             <br />藉由地心引力的重力原理 <br />鍛鍊核心肌群，舒緩脊椎壓力
             <br />訓練身體協調性，深層放鬆身體 <br />課堂裡老師會視同學狀況安排教導倒立動作
@@ -33,7 +31,7 @@
           </p>
           <RouterLink
             to="/reservation"
-            class="text-white text-xl bg-primary-text py-2 px-3 w-fit rounded-md"
+            class="text-white text-xl bg-primary-text py-2 px-4 md:px-3 w-fit rounded-md"
           >
             立即預約
           </RouterLink>
@@ -42,14 +40,15 @@
     </div>
   </div>
   <div class="bg-primary-text py-5">
-    <div class="container flex">
+    <div class="container px-4 md:px-8 flex">
       <!-- 1. 建立一個 Flex 容器，並設定整體圓角與溢出隱藏 -->
       <div class="flex rounded-md overflow-hidden border border-primary-text w-fit">
         <!-- 2. 輸入框：設定 flex-grow 佔滿剩餘空間，移除原本的圓角 -->
         <input
+          v-model="searchQuery"
           type="text"
           placeholder="請輸入要搜尋的課程"
-          class="flex-grow bg-white accent-primary-title text-primary-text px-3 py-2 outline-none focus:bg-gray-50 transition-all"
+          class="flex-grow bg-white accent-primary-title text-primary-text w-full px-3 py-2 outline-none focus:bg-gray-50 transition-all"
         />
 
         <!-- 3. 搜尋按鈕：保持原始顏色，移除左側邊框避免重疊 -->
@@ -61,9 +60,10 @@
       </div>
       <div class="ml-2">
         <select
+          v-model="selectedCategory"
           id="gender"
           name="gender"
-          class="appearance-none inline-block w-auto border border-primary-text rounded-md pl-3 pr-10 py-2 text-primary-title bg-white focus:outline-none focus:ring-1 focus:ring-primary-title cursor-pointer transition-all"
+          class="appearance-none inline-block w-auto border border-primary-text rounded-md pl-3 pr-8 py-2 text-primary-title bg-white focus:outline-none focus:ring-1 focus:ring-primary-title cursor-pointer transition-all"
           style="
             background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M7%2010L12%205L17%2010H7Z%22%20fill%3D%22%23491803%22%2F%3E%3Cpath%20d%3D%22M7%2014L12%2019L17%2014H7Z%22%20fill%3D%22%23491803%22%2F%3E%3C%2Fsvg%3E');
             background-repeat: no-repeat;
@@ -79,24 +79,24 @@
       </div>
     </div>
   </div>
-  <div class="pt-14 pb-16 border-b border-primary-title">
-    <div class="container">
-      <div class="flex flex-row gap-8">
+  <div class="pt-12 md:pt-14 pb-12 md:pb-16 border-b border-primary-title">
+    <div class="container px-4 md:px-8">
+      <div class="flex flex-col lg:flex-row gap-8">
         <div class="basis-3/4">
-          <div class="flex flex-col gap-8 p-4">
+          <div class="flex flex-col gap-8">
             <!-- 第一層：遍歷每一行 -->
             <div
               v-for="(row, rowIndex) in groupedCourses"
               :key="rowIndex"
-              class="flex flex-row gap-8"
+              class="flex flex-row flex-wrap md:flex-nowrap gap-8"
             >
               <!-- 第二層：遍歷該行中的兩個課程 -->
               <div
                 v-for="(course, colIndex) in row"
                 :key="course.id"
-                class="h-[196px] relative cursor-pointer"
+                class="h-[196px] relative cursor-pointer flex-shrink-0"
+                :class="getBasis(rowIndex, colIndex)"
                 @click="openModal(course)"
-                :style="{ flexBasis: getBasis(rowIndex, colIndex) }"
               >
                 <!-- 圖片 -->
                 <img
@@ -123,7 +123,7 @@
             </div>
           </div>
         </div>
-        <div class="basis-1/4 text-primary-title">
+        <div class="w-full md:w-1/2 lg:basis-1/4 mx-auto text-primary-title">
           <p class="text-xl mb-2">DOYOGA 上課須知：</p>
           <ul class="space-y-1">
             <li>請攜帶適當的瑜珈墊和一條長毛巾配合課程使用。</li>
@@ -144,16 +144,18 @@
     <!-- Modal 彈窗 -->
     <div
       v-if="isModalOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center"
+      class="fixed inset-0 z-50 flex items-center justify-center bg-primary-title/30"
       @click.self="closeModal"
     >
       <div
-        class="bg-primary-text border border-primary-title rounded-3xl max-w-3xl w-full p-14 relative mx-4"
+        class="bg-primary-text border border-primary-title rounded-3xl max-w-3xl w-full py-8 px-4 md:p-14 relative mx-4 md:mx-10 lg:mx-4"
       >
         <!-- Modal 內容 -->
         <div v-if="selectedCourse">
-          <div class="grid grid-cols-2 gap-10 items-center">
-            <div class="aspect-square overflow-hidden rounded-xl">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5 lg:gap-10 items-center">
+            <div
+              class="h-[165px] aspect-square md:h-full lg:aspect-square mx-auto overflow-hidden rounded-xl"
+            >
               <img
                 :src="`../../public/${selectedCourse.img}`"
                 class="w-full h-full object-cover"
@@ -189,25 +191,59 @@
     </div>
   </div>
   <div class="overflow-hidden">
-    <div class="container text-center py-10 mb-28">
-      <h2 class="text-3xl text-primary-title mb-8">師資介紹</h2>
-      <swiper
-        :slides-per-view="1.2"
-        :space-between="30"
-        :breakpoints="{
-          '768': { slidesPerView: 2.1 },
-          '1024': { slidesPerView: 3 },
-        }"
-        class="w-full !overflow-visible"
-      >
-        <swiper-slide
-          v-for="(teacher, index) in teachers"
-          :key="teacher.id"
-          class="!overflow-visible h-auto"
+    <div class="container px-4 md:px-8 text-center py-10 mb-11 md:mb-10 lg:mb-28">
+      <h2 class="text-3xl text-primary-title pb-6 lg:pb-8">師資介紹</h2>
+      <!-- 電腦和平板版 -->
+      <div class="hidden md:block">
+        <swiper
+          :slides-per-view="1.2"
+          :space-between="30"
+          :breakpoints="{
+            '768': { slidesPerView: 2.1 },
+            '1024': { slidesPerView: 3 },
+          }"
+          class="w-full h-full !overflow-visible"
         >
+          <swiper-slide
+            v-for="(teacher, index) in teachers"
+            :key="teacher.id"
+            class="!overflow-visible h-auto flex"
+          >
+            <div
+              :class="[
+                'relative text-white p-6 rounded-2xl pt-14 mt-12',
+                index % 2 === 0 ? 'bg-primary-text' : 'bg-primary-title',
+              ]"
+            >
+              <p class="text-xl mb-1">{{ teacher.name }}</p>
+              <p class="mb-4">教學經歷{{ teacher.duration }}年</p>
+
+              <div class="text-left flex-grow">
+                <p class="font-light mb-8">“{{ teacher.introduction }}”</p>
+                <ul class="space-y-1">
+                  <li v-for="(cert, cIndex) in teacher.directions" :key="cIndex">・{{ cert }}</li>
+                </ul>
+              </div>
+              <img
+                :src="`../../public/${teacher.image}`"
+                :class="[
+                  'absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[96px] border-4 rounded-full',
+                  index % 2 === 0 ? 'border-primary-title' : 'border-primary-text',
+                ]"
+                :alt="teacher.name"
+              />
+            </div>
+          </swiper-slide>
+        </swiper>
+      </div>
+      <!-- 手機板 -->
+      <div class="block md:hidden">
+        <div class="flex flex-col gap-6">
           <div
+            v-for="(teacher, index) in teachers"
+            :key="teacher.id"
             :class="[
-              'relative h-full text-white p-6 rounded-2xl pt-14 mt-12',
+              'relative text-white min-h-[400px] p-6 rounded-2xl pt-14 mt-12',
               index % 2 === 0 ? 'bg-primary-text' : 'bg-primary-title',
             ]"
           >
@@ -215,7 +251,7 @@
             <p class="mb-4">教學經歷{{ teacher.duration }}年</p>
 
             <div class="text-left flex-grow">
-              <p class="font-light mb-8">“{{ teacher.introduction }}”</p>
+              <p class="font-light mb-4 md:mb-8">“{{ teacher.introduction }}”</p>
               <ul class="space-y-1">
                 <li v-for="(cert, cIndex) in teacher.directions" :key="cIndex">・{{ cert }}</li>
               </ul>
@@ -229,16 +265,15 @@
               :alt="teacher.name"
             />
           </div>
-        </swiper-slide>
-      </swiper>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { ref } from 'vue'
 import 'swiper/css'
 
 // 1. 定義課程的資料結構
@@ -270,7 +305,7 @@ const closeModal = () => {
 }
 
 // 1. 課程原始資料
-const courses = [
+const courses = ref<Course[]>([
   {
     id: 1,
     title: '基礎',
@@ -351,23 +386,51 @@ const courses = [
     description:
       '將純淨植物精油融入瑜珈練習中。透過嗅吸與塗抹，讓香氛引領神經系統進入深層放鬆。配合溫和的體位法，舒緩日常累積的壓力與緊繃情緒，在療癒的香氣中重新找回身心的連結。',
   },
-]
+])
 
-// 2. 將資料每兩個分為一組 (Row)
+// --- 篩選用的狀態 ---
+const searchQuery = ref('') // 搜尋框內容
+const selectedCategory = ref('全部課程') // 下拉選單內容
+
+// 2. 建立「即時篩選」的計算屬性
+const filteredCourses = computed(() => {
+  return courses.value.filter((course) => {
+    // 檢查搜尋關鍵字 (包含標題或英文標題)
+    const matchesSearch =
+      course.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
+      course.englishTitle?.toLowerCase().includes(searchQuery.value.toLowerCase())
+
+    // 檢查下拉選單
+    const matchesCategory =
+      selectedCategory.value === '全部課程' || course.id === selectedCategory.value
+
+    return matchesSearch && matchesCategory
+  })
+})
+
+// 3. 將篩選結果「即時分組」(供頁面兩兩一組顯示)
 const groupedCourses = computed(() => {
-  const groups = []
-  for (let i = 0; i < courses.length; i += 2) {
-    groups.push(courses.slice(i, i + 2))
+  const result = []
+  const list = filteredCourses.value
+  for (let i = 0; i < list.length; i += 2) {
+    result.push(list.slice(i, i + 2))
   }
-  return groups
+  return result
 })
 
 const getBasis = (rowIndex: number, colIndex: number) => {
   const isEvenRow = rowIndex % 2 === 0
+
+  // 在 md (768px) 以上預設是 50% (basis-1/2)
+  // 在 lg (1024px) 以上才切換成 60%/40%
   if (isEvenRow) {
-    return colIndex === 0 ? '60%' : '40%'
+    return colIndex === 0
+      ? 'min-w-0 flex-shrink basis-full md:basis-1/2 lg:basis-[60%]'
+      : 'min-w-0 flex-shrink basis-full md:basis-1/2 lg:basis-[40%]'
   } else {
-    return colIndex === 0 ? '40%' : '60%'
+    return colIndex === 0
+      ? 'min-w-0 flex-shrink basis-full md:basis-1/2 lg:basis-[40%]'
+      : 'min-w-0 flex-shrink basis-full md:basis-1/2 lg:basis-[60%]'
   }
 }
 
