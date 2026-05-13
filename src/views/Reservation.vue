@@ -46,7 +46,7 @@
             </p>
             <button
               @click="selectPlan(item.title)"
-              class="w-full bg-primary-text py-2 text-white rounded-md text-xl hover:bg-opacity-90 transition-colors"
+              class="w-full bg-primary-text py-2 text-white rounded-md text-xl hover:bg-primary-title transition-colors"
             >
               選擇課程
             </button>
@@ -92,7 +92,7 @@
             </p>
             <button
               @click="selectPlan(item.title)"
-              class="w-full bg-primary-text py-2 text-white rounded-md text-xl hover:bg-opacity-90 transition-colors"
+              class="w-full bg-primary-text py-2 text-white rounded-md text-xl hover:text-primary-text transition-colors"
             >
               選擇課程
             </button>
@@ -242,7 +242,7 @@
     <RouterLink
       v-if="selectedPlan"
       to="/reservation-1"
-      class="inline-block w-full max-w-sm lg:max-w-md bg-primary-bg py-2 px-16 lg:px-32 text-white rounded-md text-xl mb-14 md:mb-12 lg:mb-16 text-center hover:bg-opacity-90 transition-colors"
+      class="inline-block w-full max-w-sm lg:max-w-md bg-primary-text py-2 px-16 lg:px-32 text-white rounded-md text-xl mb-14 md:mb-12 lg:mb-16 text-center hover:bg-primary-title transition-colors"
     >
       繼續預約
     </RouterLink>
