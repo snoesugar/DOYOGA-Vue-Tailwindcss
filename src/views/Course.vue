@@ -31,9 +31,12 @@
             <br />對於不敢嘗試倒立的同學來說 <br />藉由掛布的支持與保護
             <br />加上老師細心指導，讓同學能更快掌握
           </p>
-          <button class="text-white text-xl bg-primary-text py-2 px-3 w-fit rounded-md">
+          <RouterLink
+            to="/reservation"
+            class="text-white text-xl bg-primary-text py-2 px-3 w-fit rounded-md"
+          >
             立即預約
-          </button>
+          </RouterLink>
         </div>
       </div>
     </div>
@@ -69,8 +72,9 @@
           "
         >
           <option value="全部課程">全部課程</option>
-          <option value="female">女</option>
-          <option value="male">男</option>
+          <option v-for="item in courses" :key="item.id" :value="item.id">
+            {{ item.title }}
+          </option>
         </select>
       </div>
     </div>
@@ -90,7 +94,8 @@
               <div
                 v-for="(course, colIndex) in row"
                 :key="course.id"
-                class="h-[196px] relative"
+                class="h-[196px] relative cursor-pointer"
+                @click="openModal(course)"
                 :style="{ flexBasis: getBasis(rowIndex, colIndex) }"
               >
                 <!-- 圖片 -->
@@ -104,12 +109,14 @@
                 <div
                   class="absolute top-0 left-4 -translate-y-1/2 bg-primary-text text-sm text-white font-light w-fit py-1 px-4 rounded-2xl z-10"
                 >
-                  {{ course.time }}
+                  {{ course.time }} min
                 </div>
 
                 <!-- 底部文字區塊 -->
                 <div class="absolute bottom-6 left-6 text-white">
-                  <h3 class="text-3xl font-medium leading-tight">{{ course.title }}</h3>
+                  <h3 class="text-3xl font-medium leading-tight">
+                    {{ course.title }}{{ course.englishTitle ? ` ${course.englishTitle}` : '' }}
+                  </h3>
                   <p class="text-base opacity-90">授課老師：{{ course.teacher }}</p>
                 </div>
               </div>
@@ -134,73 +141,216 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="container text-center py-10 mb-28 overflow-x-hidden">
-    <h2 class="text-3xl text-primary-title mb-8">師資介紹</h2>
-    <swiper
-      :slides-per-view="1.2"
-      :space-between="30"
-      :breakpoints="{
-        '768': { slidesPerView: 2.1 },
-        '1024': { slidesPerView: 3 },
-      }"
-      class="w-full !overflow-visible"
+    <!-- Modal 彈窗 -->
+    <div
+      v-if="isModalOpen"
+      class="fixed inset-0 z-50 flex items-center justify-center"
+      @click.self="closeModal"
     >
-      <swiper-slide
-        v-for="(teacher, index) in teachers"
-        :key="teacher.id"
-        class="!overflow-visible h-auto"
+      <div
+        class="bg-primary-text border border-primary-title rounded-3xl max-w-3xl w-full p-14 relative mx-4"
       >
-        <div
-          :class="[
-            'relative h-full text-white p-6 rounded-2xl pt-14 mt-12',
-            index % 2 === 0 ? 'bg-primary-text' : 'bg-primary-title',
-          ]"
-        >
-          <p class="text-xl mb-1">{{ teacher.name }}</p>
-          <p class="mb-4">教學經歷{{ teacher.duration }}年</p>
-
-          <div class="text-left flex-grow">
-            <p class="font-light mb-8">“{{ teacher.introduction }}”</p>
-            <ul class="space-y-1">
-              <li v-for="(cert, cIndex) in teacher.directions" :key="cIndex">・{{ cert }}</li>
-            </ul>
+        <!-- Modal 內容 -->
+        <div v-if="selectedCourse">
+          <div class="grid grid-cols-2 gap-10 items-center">
+            <div class="aspect-square overflow-hidden rounded-xl">
+              <img
+                :src="`../../public/${selectedCourse.img}`"
+                class="w-full h-full object-cover"
+                :alt="selectedCourse.title"
+              />
+            </div>
+            <div class="text-white flex flex-col">
+              <h2 class="text-3xl font-medium mb-1">
+                {{ selectedCourse.title }}
+                {{ selectedCourse.englishTitle ? ` ${selectedCourse.englishTitle}` : '' }}
+              </h2>
+              <div class="flex mb-4">
+                <p>授課老師：{{ selectedCourse.teacher }}</p>
+                <p class="bg-primary-title text-sm font-light w-fit py-1 px-4 rounded-2xl ml-2">
+                  {{ selectedCourse.time }} min
+                </p>
+              </div>
+              <div class="mb-4">
+                <p class="min-h-[100px]">
+                  {{ selectedCourse.description || '暫無詳細內容介紹。' }}
+                </p>
+              </div>
+              <RouterLink
+                to="/reservation"
+                class="text-primary-title text-xl bg-primary-bg py-2 px-4 w-fit rounded-md"
+              >
+                立即預約
+              </RouterLink>
+            </div>
           </div>
-          <img
-            :src="`../../public/${teacher.image}`"
-            :class="[
-              'absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[96px] border-4 rounded-full',
-              index % 2 === 0 ? 'border-primary-title' : 'border-primary-text',
-            ]"
-            :alt="teacher.name"
-          />
         </div>
-      </swiper-slide>
-    </swiper>
+      </div>
+    </div>
+  </div>
+  <div class="overflow-hidden">
+    <div class="container text-center py-10 mb-28">
+      <h2 class="text-3xl text-primary-title mb-8">師資介紹</h2>
+      <swiper
+        :slides-per-view="1.2"
+        :space-between="30"
+        :breakpoints="{
+          '768': { slidesPerView: 2.1 },
+          '1024': { slidesPerView: 3 },
+        }"
+        class="w-full !overflow-visible"
+      >
+        <swiper-slide
+          v-for="(teacher, index) in teachers"
+          :key="teacher.id"
+          class="!overflow-visible h-auto"
+        >
+          <div
+            :class="[
+              'relative h-full text-white p-6 rounded-2xl pt-14 mt-12',
+              index % 2 === 0 ? 'bg-primary-text' : 'bg-primary-title',
+            ]"
+          >
+            <p class="text-xl mb-1">{{ teacher.name }}</p>
+            <p class="mb-4">教學經歷{{ teacher.duration }}年</p>
+
+            <div class="text-left flex-grow">
+              <p class="font-light mb-8">“{{ teacher.introduction }}”</p>
+              <ul class="space-y-1">
+                <li v-for="(cert, cIndex) in teacher.directions" :key="cIndex">・{{ cert }}</li>
+              </ul>
+            </div>
+            <img
+              :src="`../../public/${teacher.image}`"
+              :class="[
+                'absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[96px] border-4 rounded-full',
+                index % 2 === 0 ? 'border-primary-title' : 'border-primary-text',
+              ]"
+              :alt="teacher.name"
+            />
+          </div>
+        </swiper-slide>
+      </swiper>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
+import { ref } from 'vue'
 import 'swiper/css'
+
+// 1. 定義課程的資料結構
+interface Course {
+  id: number | string
+  img: string
+  title: string
+  englishTitle?: string
+  teacher: string
+  time: number
+  description?: string // 選擇性屬性，如果有介紹的話
+}
+
+// --- 修正後的狀態 ---
+const isModalOpen = ref(false)
+
+// 2. 使用泛型指定選中課程的型別，初始值為 null
+const selectedCourse = ref<Course | null>(null)
+
+// 3. 為函式參數加上型別
+const openModal = (course: Course) => {
+  selectedCourse.value = course
+  isModalOpen.value = true
+}
+
+const closeModal = () => {
+  isModalOpen.value = false
+  selectedCourse.value = null
+}
 
 // 1. 課程原始資料
 const courses = [
-  { id: 1, title: '基礎 Basic', teacher: 'Carol Tang', time: '60 min', img: 'yoga-8.jpg' },
-  { id: 2, title: '艾揚格 Iyengar', teacher: 'Kanae', time: '60 min', img: 'yoga-9.jpg' },
-  { id: 3, title: '哈達 Hatha', teacher: 'Kuzuha', time: '60 min', img: 'yoga-10.jpg' },
-  { id: 4, title: '寰宇 Universal', teacher: 'Kuzuha', time: '60 min', img: 'yoga-11.jpg' },
+  {
+    id: 1,
+    title: '基礎',
+    englishTitle: 'Basic',
+    teacher: 'Carol Tang',
+    time: 60,
+    img: 'yoga-8.jpg',
+    description:
+      '使用掛布懸掛在半空，進行哈達瑜珈體位法練習 藉由地心引力的重力原理，鍛鍊核心肌群，舒緩脊椎壓力。 訓練身體協調性，深層放鬆身體。 課堂裡老師會視同學狀況安排教導倒立動作，對於不敢嘗試倒立的同學來說，藉由掛布的支持與保護，加上老師細心指導，讓同學能更快掌握。',
+  },
+  {
+    id: 2,
+    title: '艾揚格',
+    englishTitle: 'Iyengar',
+    teacher: 'Kanae',
+    time: 60,
+    img: 'yoga-9.jpg',
+    description:
+      '強調體位法的精準與正位，課堂中會大量使用輔助道具（如瑜珈磚、伸縮帶、椅子等），幫助不同程度的同學在安全的前提下，找到身體正確的正位線條。適合想建立穩固基礎、改善體態或有受傷修復需求的學員。',
+  },
+  {
+    id: 3,
+    title: '哈達',
+    englishTitle: 'Hatha',
+    teacher: 'Kuzuha',
+    time: 60,
+    img: 'yoga-10.jpg',
+    description:
+      '瑜珈的最根本練習，透過深長的呼吸配合經典體位法，達到陰陽平衡。節奏穩定且專注，能強化肌肉力量、提高柔軟度，並在動靜之間找回內心的平靜，是適合所有程度學員的基石課程。',
+  },
+  {
+    id: 4,
+    title: '寰宇',
+    englishTitle: 'Universal',
+    teacher: 'Kuzuha',
+    time: 60,
+    img: 'yoga-11.jpg',
+    description:
+      '由 Andrey Lappa 大師所創立，以科學且邏輯化的序列設計著稱。透過十字架形的墊子擺放與多面向的轉動，挑戰大腦協調與身體極限。這是一場全方位跨越身體、能量與意識層面的深度練習。',
+  },
   {
     id: 5,
-    title: '雙人飛行 Arco Yoga',
+    title: '雙人飛行',
+    englishTitle: 'Arco Yoga',
     teacher: 'Kuzuha、Kanae',
-    time: '60 min',
+    time: 60,
     img: 'yoga-14.jpg',
+    description:
+      '結合瑜珈的靈性、泰式按摩的療癒以及特技表演的動態力量。透過與夥伴的信任合作，練習者將輪流擔任底座 (Base) 與飛翔者 (Flyer)，在趣味中鍛鍊核心穩定，並學習與人溝通及能量交換。',
   },
-  { id: 6, title: '阿斯坦加 Ashtanga', teacher: 'Kanae', time: '60 min', img: 'yoga-15.jpg' },
-  { id: 7, title: '陰陽 Yin Yang', teacher: 'Asa Chen', time: '60 min', img: 'yoga-16.jpg' },
-  { id: 8, title: '香氛 Aroma Yoga', teacher: 'Asa Chen', time: '60 min', img: 'yoga-5.jpg' },
+  {
+    id: 6,
+    title: '阿斯坦加',
+    englishTitle: 'Ashtanga',
+    teacher: 'Kanae',
+    time: 60,
+    img: 'yoga-15.jpg',
+    description:
+      '一種極具挑戰性且充滿能量的練習方式。遵循固定的體位法序列，並結合烏加依呼吸 (Ujjayi) 與注視點 (Drishti)。透過連續不間斷的流動產生內熱，淨化神經系統並排毒，適合喜歡高強度汗水與自我紀律的練習者。',
+  },
+  {
+    id: 7,
+    title: '陰陽',
+    englishTitle: 'Yin Yang',
+    teacher: 'Asa Chen',
+    time: 60,
+    img: 'yoga-16.jpg',
+    description:
+      '結合了動態流動（陽）與靜態深度伸展（陰）。前半段透過流暢動作溫暖肌肉、提振能量；後半段則進入長時保持的陰瑜珈，深入修復結締組織與筋膜。這是一堂能同時感受活力與極致放鬆的完美平衡課程。',
+  },
+  {
+    id: 8,
+    title: '香氛',
+    englishTitle: 'Aroma Yoga',
+    teacher: 'Asa Chen',
+    time: 60,
+    img: 'yoga-5.jpg',
+    description:
+      '將純淨植物精油融入瑜珈練習中。透過嗅吸與塗抹，讓香氛引領神經系統進入深層放鬆。配合溫和的體位法，舒緩日常累積的壓力與緊繃情緒，在療癒的香氣中重新找回身心的連結。',
+  },
 ]
 
 // 2. 將資料每兩個分為一組 (Row)
