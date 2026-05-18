@@ -1,9 +1,12 @@
 <template>
-  <div class="container px-4 md:px-8 text-center py-12 md:py-16">
-    <h1 class="text-3xl text-primary-title mb-6 lg:mb-8">本月課表</h1>
-    <div class="bg-primary-text p-12 rounded-2xl mb-8">
+  <div class="container px-4 md:px-10 lg:px-8 text-center py-12 md:py-16">
+    <h1 class="text-3xl text-primary-title mb-6 md:mb-8">本月課表</h1>
+
+    <div
+      class="w-full overflow-x-auto whitespace-nowrap bg-primary-text p-12 rounded-2xl mb-8 md:mb-10 lg:mb-8 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    >
       <p class="text-left text-white text-xl mb-2">2021 07 月</p>
-      <table class="w-full table-auto bg-white border-collapse">
+      <table class="w-full min-w-[700px] md:min-w-full table-auto bg-white border-collapse">
         <thead>
           <tr class="text-left font-normal text-primary-title">
             <th
@@ -25,33 +28,30 @@
             </th>
           </tr>
         </thead>
+
         <tbody>
           <tr v-for="(row, idx) in schedule" :key="idx">
-            <!-- 時間欄位 -->
             <td
               class="border-r border-b border-primary-text px-1 py-2 text-left text-sm text-primary-title whitespace-nowrap w-px"
             >
               {{ row.time }}
             </td>
 
-            <!-- 判斷：如果是休息時段 -->
             <template v-if="row.isRest">
               <td
                 colspan="6"
-                class="border-r border-b border-primary-text px-1 py-2 text-center text-primary-title"
+                class="border-b border-primary-text px-1 py-2 text-center text-primary-title"
               >
                 休息
               </td>
             </template>
 
-            <!-- 判斷：如果是課程時段 -->
             <template v-else>
               <td
                 v-for="dayKey in dayKeys"
                 :key="dayKey"
                 :class="[
                   'border-b border-primary-text px-2 py-2 text-left text-sm text-primary-title transition-colors',
-                  /* 修改後的背景邏輯 */
                   getBgClass(dayKey, row.days?.[dayKey]),
                 ]"
               >
@@ -62,16 +62,16 @@
         </tbody>
       </table>
     </div>
-    <div class="mb-10 max-w-3xl mx-auto px-4">
-      <h2 class="text-3xl text-secondary-text mb-10 text-center">上課須知</h2>
+    <div class="mb-10 md:mb-4 lg:mb-10 max-w-2xl lg:max-w-3xl mx-auto">
+      <h2 class="text-3xl text-secondary-text mb-6 lg:mb-10 text-center">上課須知</h2>
 
-      <div class="space-y-8 text-left">
-        <div v-for="(text, index) in notices" :key="index" class="flex items-center gap-6">
+      <div class="space-y-4 md:space-y-8 text-left">
+        <div v-for="(text, index) in notices" :key="index" class="flex items-center gap-2 md:gap-6">
           <!-- 1. 修改編號標籤：根據索引動態加入 mr-5 -->
           <span
             :class="[
               'text-3xl font-bold text-primary-title w-8 text-right transition-all',
-              index % 2 !== 0 ? 'ml-24' : '',
+              index % 2 !== 0 ? 'lg:ml-24' : '',
             ]"
           >
             {{ index + 1 }}.
@@ -80,9 +80,9 @@
           <!-- 2. 右側內容框：維持原有的交錯顏色邏輯 -->
           <div
             :class="[
-              'flex-grow py-4 px-6 rounded-2xl',
+              'flex-grow py-4 px-4 md:px-6 rounded-2xl',
               index % 2 === 0
-                ? 'border border-primary-text bg-white text-primary-title mr-24'
+                ? 'border border-primary-text bg-white text-primary-title lg:mr-24'
                 : 'bg-primary-text text-white',
             ]"
           >
