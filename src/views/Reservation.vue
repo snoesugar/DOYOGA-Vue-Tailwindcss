@@ -115,8 +115,8 @@
     <!-- 平板和手機版 -->
     <div class="block lg:hidden">
       <div class="flex justify-around mb-4">
-        <div class="p-3 transition-all duration-300">
-          <!-- 使用 v-show 判斷：當目前的方案標題等於選中的標題時才顯示 -->
+        <!-- 判斷 selectedPlan 只要不是空字串或 null，箭頭就顯示 -->
+        <div v-show="selectedPlan" class="p-3 transition-all duration-300">
           <i class="bi bi-caret-down-fill text-primary-title"></i>
         </div>
       </div>
