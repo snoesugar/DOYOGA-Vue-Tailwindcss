@@ -128,6 +128,8 @@
 
 <script setup lang="ts">
 import { useForm, useField } from 'vee-validate'
+import { toast } from 'vue3-toastify'
+import 'vue3-toastify/dist/index.css'
 // 註：如果你有使用 vue-router 或 pinia store，請記得取消下方的註解導入
 // import { useRouter } from 'vue-router'
 // const router = useRouter()
@@ -153,7 +155,10 @@ const { value: feedback } = useField<string>('feedback')
 // 3. 處理表單送出邏輯
 const handleSubmitFeedback = handleSubmit((values) => {
   console.log('表單驗證成功，送出的資料：', values)
-  // 在這裡執行你的 API 送出邏輯
-  alert('意見已成功送出！')
+  // 2. 使用 vue3-toastify 的方法
+  toast.success('意見已成功送出！', {
+    autoClose: 2000, // 2 秒後自動關閉
+    position: toast.POSITION.TOP_RIGHT,
+  })
 })
 </script>
