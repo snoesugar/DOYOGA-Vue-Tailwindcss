@@ -31,7 +31,7 @@
           </p>
           <RouterLink
             to="/reservation"
-            class="text-white text-xl bg-primary-text py-2 px-4 md:px-3 w-fit rounded-md"
+            class="text-white text-xl bg-primary-text hover:bg-primary-title py-2 px-4 md:px-3 w-fit rounded-md"
           >
             立即預約
           </RouterLink>

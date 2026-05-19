@@ -19,9 +19,7 @@
           :key="item.title"
           :class="[
             'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-col md:flex-row lg:flex-col transition-all duration-300',
-            selectedPlan === item.title
-              ? 'border-transparent ring-4 ring-primary-text'
-              : 'border-primary-text',
+            selectedPlan === item.title ? 'ring-4 ring-primary-text' : 'border-primary-text',
           ]"
         >
           <img
@@ -63,9 +61,7 @@
           v-show="!selectedPlan || selectedPlan === item.title"
           :class="[
             'col-span-3 lg:col-span-1 overflow-hidden rounded-2xl border border-primary-text flex flex-col md:flex-row lg:flex-col transition-all duration-300',
-            selectedPlan === item.title
-              ? 'border-transparent ring-4 ring-primary-text'
-              : 'border-primary-text',
+            selectedPlan === item.title ? 'ring-4 ring-primary-text' : 'border-primary-text',
             /* 如果已選中方案，在 md 尺寸將寬度撐滿 */
             selectedPlan ? 'md:w-full' : '',
           ]"

@@ -7,10 +7,12 @@
       <p class="text-xl md:text-2xl md:w-96 mb-6">多給自己一點時間享受靜謐，傾聽內心的聲音。</p>
       <RouterLink
         to="/reservation"
-        class="px-4 py-2 bg-primary-bg text-secondary-text rounded-md mr-2"
+        class="px-4 py-2 bg-primary-bg text-secondary-text hover:bg-primary-text hover:text-white rounded-md mr-2"
         >立即預約</RouterLink
       >
-      <RouterLink to="/course" class="px-4 py-2 bg-primary-text text-white rounded-md mr-2"
+      <RouterLink
+        to="/course"
+        class="px-4 py-2 bg-primary-text text-white hover:bg-primary-title rounded-md mr-2"
         >課程介紹</RouterLink
       >
     </div>
@@ -132,7 +134,7 @@
           <p class="text-primary-text text-lg lg:text-xl mb-4 lg:mb-6">
             我們都渴望平靜安穩的生活，擁有一處能夠靜心的角落，安撫每天繁雜忙碌的心。
           </p>
-          <a href="#" class="text-primary-title flex items-center group">
+          <a href="#" class="text-primary-title flex hover:text-primary-text items-center group">
             環境介紹
             <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
           </a>
@@ -176,7 +178,10 @@
           <p class="text-primary-text text-lg lg:text-xl mb-4 lg:mb-6">
             教師帶領多元課程，釋放壓力，與身心常見的緊繃不適溫柔和解。
           </p>
-          <RouterLink to="/course" class="text-primary-title flex items-center group">
+          <RouterLink
+            to="/course"
+            class="text-primary-title flex hover:text-primary-text items-center group"
+          >
             課程介紹
             <i class="bi bi-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
           </RouterLink>
@@ -242,7 +247,9 @@
           >
             {{ item.desc }}
           </p>
-          <button class="w-full bg-primary-text py-2 text-white rounded-md text-xl">
+          <button
+            class="w-full bg-primary-text py-2 text-white hover:bg-primary-title rounded-md text-xl"
+          >
             選擇課程
           </button>
         </div>
