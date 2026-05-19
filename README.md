@@ -2,7 +2,7 @@
 
 DOYOGA 是一個專為瑜珈愛好者與初學者設計的響應式品牌官方網站。透過清新、簡約且溫柔的「輕時尚」視覺設計，傳遞「多給自己一點時間享受靜謐，傾聽內心的聲音」之核心理念，並提供流暢的沉浸式互動體驗。
 
-🔗 **[點此線上預覽成品](https://doyoga-vue-tailwindcss-grxzk5t10-snoesugars-projects.vercel.app/)**
+🔗 **[點此線上預覽成品](https://doyoga-vue-tailwindcss.vercel.app)**
 
 ---
 
