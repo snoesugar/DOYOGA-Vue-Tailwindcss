@@ -100,7 +100,7 @@
               >
                 <!-- 圖片 -->
                 <img
-                  :src="`../../public/${course.img}`"
+                  :src="`/${course.img}`"
                   class="object-cover object-center h-full w-full rounded-2xl"
                   :alt="course.title"
                 />
@@ -157,7 +157,7 @@
               class="h-[165px] aspect-square md:h-full lg:aspect-square mx-auto overflow-hidden rounded-xl"
             >
               <img
-                :src="`../../public/${selectedCourse.img}`"
+                :src="`/${selectedCourse.img}`"
                 class="w-full h-full object-cover"
                 :alt="selectedCourse.title"
               />
@@ -225,7 +225,7 @@
                 </ul>
               </div>
               <img
-                :src="`../../public/${teacher.image}`"
+                :src="`/${teacher.image}`"
                 :class="[
                   'absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[96px] border-4 rounded-full',
                   index % 2 === 0 ? 'border-primary-title' : 'border-primary-text',
@@ -257,7 +257,7 @@
               </ul>
             </div>
             <img
-              :src="`../../public/${teacher.image}`"
+              :src="`/${teacher.image}`"
               :class="[
                 'absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[96px] border-4 rounded-full',
                 index % 2 === 0 ? 'border-primary-title' : 'border-primary-text',

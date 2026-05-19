@@ -47,7 +47,7 @@
     <div class="container px-4 md:px-10 lg:px-8 py-8 lg:py-16 text-center">
       <div class="grid lg:grid-cols-2 items-center justify-center gap-8">
         <img
-          src="../../public/yoga-4.jpeg"
+          src="/yoga-4.jpeg"
           alt="yoga-4"
           class="w-full h-[628px] rounded-2xl object-cover object-center hidden lg:block"
         />
