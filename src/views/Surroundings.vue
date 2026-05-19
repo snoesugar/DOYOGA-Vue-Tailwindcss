@@ -1,29 +1,103 @@
 <template>
-  <div class="container px-4 md:px-10 lg:px-8 text-center py-12 md:py-16">
+  <div class="container px-4 md:px-10 lg:px-8 text-center pt-12 md:pt-16 pb-10 lg:pb-16">
     <h1 class="text-3xl text-primary-title mb-6 md:mb-8">瑜珈空間</h1>
-    <div class="flex flex-col lg:flex-row gap-8 mb-6">
+    <div class="flex flex-col md:flex-row gap-8">
       <div class="basis-3/5">
-        <div class="flex flex-col md:grid md:grid-cols-2 gap-6 w-full">
+        <!-- 父容器：在手機版為單欄（gap-6 保持間距），在 md 螢幕以上轉為 2 欄網格 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-y-4 lg:gap-y-6 gap-x-8 w-full">
+          <!-- 1. 第一個區塊：使用 md:col-span-2 達成滿寬 -->
           <div class="relative rounded-2xl overflow-hidden md:col-span-2">
             <img
               src="../../public/class-1.jpg"
-              class="object-cover object-center w-full h-full"
+              class="object-cover object-center w-full h-[350px] md:h-[216px] lg:h-[350px]"
               alt="A、B 團體課教室"
             />
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
             ></div>
             <div class="absolute bottom-6 left-6 right-6 text-white text-left">
-              <h3 class="text-2xl md:text-3xl font-medium leading-tight">A、B 團體課教室</h3>
+              <h3 class="text-2xl lg:text-3xl font-medium leading-tight">A、B 團體課教室</h3>
               <p class="text-sm md:text-base opacity-90">
                 教授課程：A-基礎、艾揚格、哈達、寰宇；B-雙人飛行、阿斯坦加、陰陽、香氛
               </p>
             </div>
           </div>
+
+          <!-- 2. 第二個區塊：自動佔 1 欄 -->
+          <div class="relative rounded-2xl overflow-hidden h-[350px] md:h-[210px] lg:h-[280px]">
+            <img
+              src="../../public/yoga-5.jpg"
+              class="object-cover object-center w-full h-full"
+              alt="C、D 個人訓練室"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            ></div>
+            <div
+              class="absolute bottom-3 lg:bottom-6 left-3 lg:left-6 right-3 lg:right-6 text-white text-left"
+            >
+              <h3 class="text-2xl font-medium leading-tight">C、D 個人訓練室</h3>
+              <p class="text-sm opacity-90">開放時間：每週一至週五 09:00~17:00</p>
+            </div>
+          </div>
+
+          <!-- 3. 第三個區塊：自動佔 1 欄 -->
+          <div class="relative rounded-2xl overflow-hidden h-[350px] md:h-[210px] lg:h-[280px]">
+            <img
+              src="../../public/class-2.jpg"
+              class="object-cover object-center w-full h-full"
+              alt="淋浴間"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            ></div>
+            <div
+              class="absolute bottom-3 lg:bottom-6 left-3 lg:left-6 right-3 lg:right-6 text-white text-left"
+            >
+              <h3 class="text-2xl font-medium leading-tight">淋浴間</h3>
+              <p class="text-sm opacity-90">開放時間：每週一至週日 09:00~21:30</p>
+            </div>
+          </div>
+
+          <!-- 4. 第四個區塊：自動佔 1 欄 -->
+          <div class="relative rounded-2xl overflow-hidden h-[350px] md:h-[210px] lg:h-[280px]">
+            <img
+              src="../../public/yoga-7.jpg"
+              class="object-cover object-center w-full h-full"
+              alt="器材出租"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            ></div>
+            <div
+              class="absolute bottom-3 lg:bottom-6 left-3 lg:left-6 right-3 lg:right-6 text-white text-left"
+            >
+              <h3 class="text-2xl font-medium leading-tight">器材出租</h3>
+              <p class="text-sm opacity-90">有租借需求請至櫃檯登記</p>
+            </div>
+          </div>
+
+          <!-- 5. 第五個區塊：自動佔 1 欄 -->
+          <div class="relative rounded-2xl overflow-hidden h-[350px] md:h-[210px] lg:h-[280px]">
+            <img
+              src="../../public/class-3.jpg"
+              class="object-cover object-center w-full h-full"
+              alt="交誼廳"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
+            ></div>
+            <div
+              class="absolute bottom-3 lg:bottom-6 left-3 lg:left-6 right-3 lg:right-6 text-white text-left"
+            >
+              <h3 class="text-2xl font-medium leading-tight">交誼廳</h3>
+              <p class="text-sm opacity-90">開放時間：每週一至週五 09:00~21:30</p>
+            </div>
+          </div>
         </div>
       </div>
       <div
-        class="w-full md:w-1/2 lg:basis-2/5 text-primary-title bg-primary-bg rounded-2xl p-8 text-left"
+        class="w-full md:w-1/2 lg:basis-2/5 text-primary-title bg-primary-bg rounded-2xl p-8 md:p-4 lg:p-8 text-left h-[350px]"
       >
         <p class="text-xl mb-4">DOYOGA 提供：</p>
         <ul class="space-y-1 mb-3">
@@ -38,88 +112,18 @@
         </RouterLink>
       </div>
     </div>
-    <div class="flex flex-col lg:flex-row gap-8">
-      <div class="basis-3/5">
-        <div class="flex flex-col md:grid md:grid-cols-2 gap-6 w-full">
-          <div class="relative rounded-2xl overflow-hidden h-[240px] md:h-[280px]">
-            <img
-              src="../../public/yoga-5.jpg"
-              class="object-cover object-center w-full h-full"
-              alt="C、D 個人訓練室"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-            ></div>
-            <div class="absolute bottom-6 left-6 right-6 text-white text-left">
-              <h3 class="text-2xl font-medium leading-tight">C、D 個人訓練室</h3>
-              <p class="text-sm opacity-90">開放時間：每週一至週五 09:00~17:00</p>
-            </div>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden h-[240px] md:h-[280px]">
-            <img
-              src="../../public/class-2.jpg"
-              class="object-cover object-center w-full h-full"
-              alt="淋浴間"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-            ></div>
-            <div class="absolute bottom-6 left-6 right-6 text-white text-left">
-              <h3 class="text-2xl font-medium leading-tight">淋浴間</h3>
-              <p class="text-sm opacity-90">開放時間：每週一至週日 09:00~21:30</p>
-            </div>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden h-[240px] md:h-[280px]">
-            <img
-              src="../../public/yoga-7.jpg"
-              class="object-cover object-center w-full h-full"
-              alt="器材出租"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-            ></div>
-            <div class="absolute bottom-6 left-6 right-6 text-white text-left">
-              <h3 class="text-2xl font-medium leading-tight">器材出租</h3>
-              <p class="text-sm opacity-90">有租借需求請至櫃檯登記</p>
-            </div>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden h-[240px] md:h-[280px]">
-            <img
-              src="../../public/class-3.jpg"
-              class="object-cover object-center w-full h-full"
-              alt="交誼廳"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"
-            ></div>
-            <div class="absolute bottom-6 left-6 right-6 text-white text-left">
-              <h3 class="text-2xl font-medium leading-tight">交誼廳</h3>
-              <p class="text-sm opacity-90">開放時間：每週一至週五 09:00~21:30</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="w-full md:w-1/2 lg:basis-2/5"></div>
-    </div>
   </div>
-  <div class="bg-primary-bg pt-10 pb-14">
-    <div class="container">
-      <h2 class="text-3xl text-primary-title text-center mb-6 md:mb-8">課程推薦</h2>
+  <div class="bg-primary-bg pt-10 pb-12 md:pb-14">
+    <div class="container px-4 md:px-10 lg:px-8">
+      <h2 class="text-3xl text-primary-title text-center mb-8 md:mb-6 lg:mb-8">課程推薦</h2>
       <div class="w-full">
-        <swiper
-          :slides-per-view="'auto'"
-          :space-between="70"
-          class="overflow-hidden w-full hidden lg:block"
-        >
+        <swiper :slides-per-view="'auto'" :space-between="30" class="overflow-hidden w-full">
           <swiper-slide
             v-for="item in yogaClasses"
             :key="item.Image"
             class="rounded-2xl flex items-center justify-center w-auto"
           >
-            <div class="flex flex-col pr-6">
+            <div class="flex flex-col">
               <div class="w-[255px] h-[196px] rounded-2xl overflow-hidden mb-2 shadow-sm">
                 <img :src="item.Image" :alt="item.alt" class="w-full h-full object-cover" />
               </div>
