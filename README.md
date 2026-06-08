@@ -19,11 +19,14 @@ DOYOGA 是一個專為瑜珈愛好者與初學者設計的響應式品牌官方�
 
 本專案由我獨立負責前端架構開發，針對跨裝置排版、動態組件渲染、流暢的手勢互動以及**跨頁面複雜預約邏輯**，提出了以下解決方案：
 
-### 1. 全域狀態管理與跨頁面預約流（Pinia State Management）
+### 1. TypeScript 強型別與 Pinia 全域狀態管理（Pinia State Management）
 
-- **跨組件資料共享**：使用 **Pinia** 建立 `userReservationStore`，集中管理多步驟預約表單的複雜資料。
-- **流暢的商務邏輯**：實現使用者在「首頁/方案頁」點選特定方案（`selectedPlan`）或課程（`selectedCourse`）後，資料能無縫傳遞至「預約報名頁面」，自動帶入對應欄位，大幅優化轉換率與使用者體驗。
-- **型別安全與嚴謹性**：整合 **TypeScript** 定義 `ReservationForm` 介面，在 `actions` 寫入時嚴格限制型別（如解決 `string | null` 的傳入相容性），確保全域資料流在跨頁面傳遞時的穩定與安全。
+- **跨組件資料共享**：使用 **Pinia** 建立 `userReservationStore`，集中管理多步驟預約表單（如瑜珈經驗、改善目標、個人資料等）的複雜資料流。
+- **型別安全與嚴謹性**：全面導入 **TypeScript** 定義 `ReservationForm` 介面，針對全域狀態進行強型別約束。
+- **容錯與相容性優化**：在定義與操作 State 時，精準處理 `string | null` 或 `number | null` 的潛在空值問題。透過在 Store 內部將 `selectedPlan` 與 `selectedCourse` 斷言為 `string | null`，並在 Actions（如 `setPlan`, `setCourse`）中嚴格限制型別傳入，徹底杜絕了跨頁面傳遞、初始路由載入時可能發生的型別衝突與執行期錯誤（Runtime Error）。
+
+- **流暢的商務邏輯**：透過 `Object.assign(this.$state, data)` 實現響應式狀態的批次安全更新；並利用 Pinia **Getters**（如 `selectedDateDisplay`）即時進行資料轉換（將 `YYYY-MM-DD` 轉換為預覽介面所需的 `YYYY/MM/DD` 格式），達成資料與視圖的完美分離。
+- **無縫跳轉體驗**：當使用者在「首頁/方案頁」點選特定方案或課程後，資料能無縫傳遞至「預約報名頁面」並自動帶入對應欄位，大幅優化商務轉換率。
 
 ### 2. 響應式排版與斷點優化 (Responsive Design)
 
