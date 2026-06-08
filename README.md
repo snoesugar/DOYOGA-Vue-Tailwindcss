@@ -24,7 +24,6 @@ DOYOGA 是一個專為瑜珈愛好者與初學者設計的響應式品牌官方�
 - **跨組件資料共享**：使用 **Pinia** 建立 `userReservationStore`，集中管理多步驟預約表單（如瑜珈經驗、改善目標、個人資料等）的複雜資料流。
 - **型別安全與嚴謹性**：全面導入 **TypeScript** 定義 `ReservationForm` 介面，針對全域狀態進行強型別約束。
 - **容錯與相容性優化**：在定義與操作 State 時，精準處理 `string | null` 或 `number | null` 的潛在空值問題。透過在 Store 內部將 `selectedPlan` 與 `selectedCourse` 斷言為 `string | null`，並在 Actions（如 `setPlan`, `setCourse`）中嚴格限制型別傳入，徹底杜絕了跨頁面傳遞、初始路由載入時可能發生的型別衝突與執行期錯誤（Runtime Error）。
-
 - **流暢的商務邏輯**：透過 `Object.assign(this.$state, data)` 實現響應式狀態的批次安全更新；並利用 Pinia **Getters**（如 `selectedDateDisplay`）即時進行資料轉換（將 `YYYY-MM-DD` 轉換為預覽介面所需的 `YYYY/MM/DD` 格式），達成資料與視圖的完美分離。
 - **無縫跳轉體驗**：當使用者在「首頁/方案頁」點選特定方案或課程後，資料能無縫傳遞至「預約報名頁面」並自動帶入對應欄位，大幅優化商務轉換率。
 
