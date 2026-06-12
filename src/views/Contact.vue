@@ -9,7 +9,7 @@
             class="rounded-2xl overflow-hidden md:col-span-2 h-[195px] md:h-[323px] lg:h-[400px]"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.721495914619!2d120.3429188!3d22.6269151!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e440620ed772d%3A0xc3f8e65893b82736!2z6auY6ZuE5biC6IuT6ZuF5Y2A5YyX5L_oSb_!5e0!3m2!1szh-TW!2stw!4v1716100000000!5m2!1szh-TW!2stw"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3682.721495914619!2d120.313125!3d22.625603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x346e04973b12542d%3A0x312d2f7a7267d81d!2zODAy6auY6ZuE5biC6IuT6ZuF5Y2A5YyX5L_oSb_lj7DlsYjovrDmjIflt6XvvIjkuK3lm73lkIPlj7DlsYjkuK3lv47orqHvvIk!5e0!3m2!1szh-TW!2stw!4v1716100000000!5m2!1szh-TW!2stw"
               class="w-full h-full border-0"
               allowfullscreen="false"
               loading="lazy"
@@ -18,7 +18,7 @@
           </div>
           <div class="text-left text-primary-title">
             <h2 class="text-2xl mb-2">DOYOGA 教室位置</h2>
-            <p class="mb-2 md:mb-8 lg:mb-2">高雄市苓雅區北信街 23 號 2 樓</p>
+            <p class="mb-2 md:mb-8 lg:mb-2">高雄市苓雅區林南街 23 號</p>
             <p>如何前往：</p>
             <ul class="space-y-6">
               <li>1. 搭乘捷運：紅線到正義站 3 號出口，延正義路方向至北信街交叉口即可。</li>
